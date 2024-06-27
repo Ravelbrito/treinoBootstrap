@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <!-- Adicionando Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilo personalizado para o botão de login */
+    .login-button {
+      background-color: #007bff; /* Cor de fundo azul */
+      border-color: #007bff; /* Cor da borda azul */
+      color: white; /* Cor do texto branco */
+    }
+
+    /* Hover effect para o botão de login */
+    .login-button:hover {
+      background-color: #0056b3; /* Cor de fundo azul mais escura no hover */
+      border-color: #0056b3; /* Cor da borda azul mais escura no hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="Projeto final1.html">Cursos Bolt</a>
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link" href="#">&nbsp;</a>
+    </div>
+  </nav>
+
+  <!-- Banner de Oferta Relâmpago -->
+  <section id="flash-offer" class="container mt-5">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-center">
+        <h1 class="display-4">Oferta Relâmpago!</h1>
+        <p class="lead"><img src="OFERTA RELAMPAGO.jpg" alt="Oferta relampago"></p>
+        <p>Desconto de até 50% em todos os produtos!</p>
+        <!-- Contador de Tempo -->
+        <div id="countdown"></div>
+        <a href="#" class="btn btn-primary btn-lg">Aproveitar Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Captação de Leads -->
+  <section id="lead-capture" class="container mt-5">
+    <h2>Informações de cadastro</h2>
+    <form>
+      <div class="form-group">
+        <label for="leadName">Nome:</label>
+        <input type="text" class="form-control" id="leadName" placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label for="leadEmail">Email:</label>
+        <input type="email" class="form-control" id="leadEmail" placeholder="Seu email">
+      </div>
+      <div class="form-group">
+        <label for="leadPhone">Telefone:</label>
+        <input type="tel" class="form-control" id="leadPhone" placeholder="Seu telefone">
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </section>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Função para atualizar o contador regressivo
+    function updateCountdown() {
+      // Definir a data final da oferta relâmpago (por exemplo, 24 horas a partir de agora)
+      var deadline = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+      // Atualizar o contador a cada segundo
+      var x = setInterval(function() {
+        // Calcular o tempo restante
+        var now = new Date().getTime();
+        var distance = deadline - now;
+
+        // Calcular dias, horas, minutos e segundos restantes
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Exibir o contador no formato "00:00:00"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // Quando o contador chegar a zero, exibir uma mensagem
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "Oferta expirada!";
+        }
+      }, 1000);
+    }
+
+    // Chamar a função para iniciar o contador regressivo
+    updateCountdown();
+  </script>
+</body>
+</html>
